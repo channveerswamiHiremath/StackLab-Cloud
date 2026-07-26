@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StackLab Cloud</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8f7f3;
+  --white:#ffffff;
+  --ink:#0d0d0b;
+  --ink2:#505048;
+  --rule:#e2e1da;
+  --mist:#8f8f86;
+  --blue:#2563eb;
+  --blue-dk:#1d4ed8;
+  --blue-lt:#eff4ff;
+  --display:'Syne',sans-serif;
+  --body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 3rem;
+  background:rgba(248,247,243,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule);
+}
+.logo{font-family:var(--display);font-size:1.05rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em;text-decoration:none}
+.logo b{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:0.82rem;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-btn{
+  padding:.5rem 1.2rem;
+  background:var(--ink);color:var(--white)!important;
+  border-radius:3px;font-size:.82rem!important;font-weight:500!important;
+  transition:background .2s!important;
+}
+.nav-btn:hover{background:#2a2a26!important}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:8rem 2rem 5rem;
+  position:relative;overflow:hidden;
+}
+.hero-chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.3rem .9rem;border-radius:2rem;
+  background:var(--blue-lt);border:1px solid #bfdbfe;
+  font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:2rem;
+}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:ping 2s infinite}
+@keyframes ping{0%,100%{opacity:1}50%{opacity:.2}}
+
+h1.headline{
+  font-family:var(--display);
+  font-size:clamp(3.2rem,9vw,7rem);
+  font-weight:700;letter-spacing:-.04em;line-height:.95;
+  color:var(--ink);margin-bottom:2rem;
+}
+h1.headline .blue{color:var(--blue)}
+.hero-sub{
+  font-size:1.05rem;color:var(--ink2);
+  max-width:480px;margin:0 auto 2.5rem;
+  line-height:1.8;font-weight:300;
+}
+.hero-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:.8rem 1.8rem;
+  border-radius:3px;font-family:var(--body);font-size:.88rem;font-weight:500;
+  text-decoration:none;cursor:pointer;border:none;
+  transition:background .2s,transform .15s,border-color .2s;
+}
+.btn-fill{background:var(--blue);color:var(--white)}
+.btn-fill:hover{background:var(--blue-dk);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+.btn-outline:hover{border-color:#aaa;background:#f0efe8}
+
+/* ── DIVIDER ── */
+hr.rule{border:none;border-top:1px solid var(--rule)}
+
+/* ── PILLARS ── */
+.pillars{max-width:1100px;margin:0 auto;padding:6rem 3rem}
+.section-eye{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);margin-bottom:3rem}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.pillar-n{
+  font-family:var(--display);font-size:3rem;font-weight:700;
+  letter-spacing:-.04em;line-height:1;color:var(--ink);margin-bottom:.5rem;
+}
+.pillar-n sup{font-size:1.2rem;color:var(--blue);vertical-align:super}
+.pillar-title{font-size:.95rem;font-weight:500;margin-bottom:.4rem}
+.pillar-desc{font-size:.83rem;color:var(--ink2);line-height:1.75}
+
+/* ── DARK STRIP ── */
+.dark-strip{background:var(--ink);color:var(--white);padding:6rem 3rem}
+.dark-inner{max-width:1100px;margin:0 auto}
+.dark-head{margin-bottom:4rem}
+.dark-head h2{
+  font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:700;letter-spacing:-.03em;line-height:1.1;
+  color:var(--white);margin-bottom:.75rem;
+}
+.dark-head p{color:#9ca3af;font-size:.9rem;max-width:400px;line-height:1.75}
+.caps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1a1a18}
+.cap{padding:2.5rem 2rem;background:#0d0d0b;transition:background .2s}
+.cap:hover{background:#141412}
+.cap-ic{
+  width:38px;height:38px;border-radius:6px;
+  border:1px solid #272724;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.25rem;
+}
+.cap-ic svg{width:18px;height:18px;stroke:#6b7280;stroke-width:1.5;fill:none;transition:stroke .2s}
+.cap:hover .cap-ic svg{stroke:var(--blue)}
+.cap h3{font-family:var(--display);font-size:.95rem;font-weight:600;color:#f9fafb;margin-bottom:.45rem}
+.cap p{font-size:.8rem;color:#6b7280;line-height:1.75}
+
+/* ── PORTALS ── */
+.portals{max-width:1100px;margin:0 auto;padding:6rem 3rem}
+.portals h2{
+  font-family:var(--display);font-size:clamp(2rem,4vw,3rem);
+  font-weight:700;letter-spacing:-.03em;margin-bottom:.6rem;
+}
+.portals>p{color:var(--ink2);font-size:.9rem;margin-bottom:3rem;max-width:420px}
+.portal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.portal{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem 1.75rem;
+  background:var(--white);border:1px solid var(--rule);border-radius:6px;
+  text-decoration:none;color:inherit;
+  transition:border-color .2s,transform .15s,box-shadow .2s;
+}
+.portal:hover{border-color:#93c5fd;transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,99,235,.07)}
+.p-badge{
+  display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:.2rem .55rem;border-radius:2px;margin-bottom:.4rem;
+}
+.badge-blue{background:var(--blue-lt);color:var(--blue)}
+.badge-green{background:#f0fdf4;color:#15803d}
+.badge-amber{background:#fffbeb;color:#92400e}
+.badge-violet{background:#f5f3ff;color:#5b21b6}
+.p-name{font-family:var(--display);font-size:1.05rem;font-weight:600}
+.p-url{font-size:.7rem;color:var(--mist);margin-top:.15rem}
+.p-arrow{font-size:1.1rem;color:var(--rule);transition:color .2s,transform .2s}
+.portal:hover .p-arrow{color:var(--blue);transform:translate(3px,-3px)}
+
+/* ── CONTACT ── */
+.contact-wrap{background:#f0efe8;border-top:1px solid var(--rule)}
+.contact-inner{max-width:620px;margin:0 auto;padding:6rem 2rem}
+.contact-inner h2{
+  font-family:var(--display);font-size:clamp(2rem,4vw,3rem);
+  font-weight:700;letter-spacing:-.03em;margin-bottom:.6rem;
+}
+.contact-inner>p{color:var(--ink2);font-size:.9rem;line-height:1.8;margin-bottom:2.5rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:.35rem}
+.field input,.field select,.field textarea{
+  width:100%;padding:.75rem 1rem;
+  background:var(--white);border:1px solid var(--rule);border-radius:4px;
+  font-family:var(--body);font-size:.9rem;color:var(--ink);
+  outline:none;transition:border-color .2s;
+  appearance:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#93c5fd}
+.field textarea{height:80px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.sub-btn{
+  width:100%;padding:.85rem;margin-top:.5rem;
+  background:var(--blue);color:var(--white);
+  border:none;border-radius:4px;
+  font-family:var(--body);font-size:.9rem;font-weight:500;
+  cursor:pointer;transition:background .2s;
+}
+.sub-btn:hover{background:var(--blue-dk)}
+.sub-btn:disabled{opacity:.6;cursor:not-allowed}
+.form-note{font-size:.73rem;color:var(--mist);text-align:center;margin-top:.75rem}
+.form-err{font-size:.8rem;color:#dc2626;margin-top:.5rem;display:none}
+.form-ok{display:none;text-align:center;padding:3rem 0}
+.form-ok .tick{font-size:2.5rem;color:var(--blue)}
+.form-ok h3{font-family:var(--display);font-size:1.5rem;font-weight:700;margin:.5rem 0}
+.form-ok p{color:var(--ink2);font-size:.88rem}
+
+/* ── FOOTER ── */
+footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.75rem 3rem;border-top:1px solid var(--rule);
+}
+.foot-logo{font-family:var(--display);font-size:.9rem;font-weight:700;color:var(--ink)}
+.foot-logo b{color:var(--blue)}
+.foot-links{display:flex;gap:2rem;list-style:none}
+.foot-links a{font-size:.78rem;color:var(--mist);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--ink)}
+.foot-copy{font-size:.75rem;color:var(--mist)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem}.nav-links{display:none}
+  .pillars,.portals{padding:4rem 1.5rem}.pillars-grid{grid-template-columns:1fr}
+  .dark-strip{padding:4rem 1.5rem}.caps-grid{grid-template-columns:1fr}
+  .portal-grid{grid-template-columns:1fr}
+  .contact-inner{padding:4rem 1.5rem}.two{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1rem;text-align:center;padding:1.5rem}
+  .foot-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">Stack<b>Lab</b> Cloud</a>
+  <ul class="nav-links">
+    <li><a href="#features">Platform</a></li>
+    <li><a href="#portals">Services</a></li>
+    <li><a href="#contact" class="nav-btn">Get Access →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-chip"><span class="live-dot"></span> Platform Online</div>
+  <h1 class="headline">Your cloud.<br><span class="blue">No limits.</span></h1>
+  <p class="hero-sub">
+    Launch servers, store files, run databases, and monitor everything —
+    all from a browser. Built for people who want real cloud power without the complexity.
+  </p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn btn-fill">Request Access</a>
+    <a href="#portals" class="btn btn-outline">Explore Services</a>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- PILLARS -->
+<div class="pillars">
+  <div class="section-eye">Why StackLab Cloud</div>
+  <div class="pillars-grid">
+    <div>
+      <div class="pillar-n">On<sup>demand</sup></div>
+      <div class="pillar-title">Resources when you need them</div>
+      <div class="pillar-desc">Spin up a server, a database, or a storage bucket in seconds — not hours. No waiting, no procurement, no setup headache.</div>
+    </div>
+    <div>
+      <div class="pillar-n">100<sup>% browser</sup></div>
+      <div class="pillar-title">No software to install</div>
+      <div class="pillar-desc">Every service runs in your browser. Manage infrastructure, query databases, and browse files from any device, anywhere.</div>
+    </div>
+    <div>
+      <div class="pillar-n">Live<sup>metrics</sup></div>
+      <div class="pillar-title">Always know what's happening</div>
+      <div class="pillar-desc">Real-time dashboards and alerts show the health of every resource you own — nothing hidden, nothing guessed.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DARK FEATURES -->
+<div class="dark-strip" id="features">
+  <div class="dark-inner">
+    <div class="dark-head">
+      <h2>Everything you need<br>to build and run.</h2>
+      <p>A complete cloud platform — compute, storage, databases, and monitoring — available on request.</p>
+    </div>
+    <div class="caps-grid">
+      <div class="cap">
+        <div class="cap-ic">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Virtual Machines</h3>
+        <p>Launch Linux instances on demand. Full root access, dedicated compute, and networking included.</p>
+      </div>
+      <div class="cap">
+        <div class="cap-ic">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        </div>
+        <h3>Managed Databases</h3>
+        <p>MySQL databases with a visual query interface. No terminal, no config — just tables and data.</p>
+      </div>
+      <div class="cap">
+        <div class="cap-ic">
+          <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Cloud File Storage</h3>
+        <p>Upload, organize, and share files through a familiar drive interface. Access from anywhere.</p>
+      </div>
+      <div class="cap">
+        <div class="cap-ic">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Live Monitoring</h3>
+        <p>Visual dashboards showing real-time resource usage, performance trends, and configurable alerts.</p>
+      </div>
+      <div class="cap">
+        <div class="cap-ic">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Secure by Default</h3>
+        <p>All services run over encrypted HTTPS. No exposed ports — every endpoint protected from day one.</p>
+      </div>
+      <div class="cap">
+        <div class="cap-ic">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Always Available</h3>
+        <p>Your VMs, files, and databases stay running. Persistent infrastructure you can rely on.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTALS -->
+<div class="portals" id="portals">
+  <h2>Open right in your browser.</h2>
+  <p>Once your account is set up, these are your entry points. Click any service to open it.</p>
+  <div class="portal-grid">
+
+    <a href="https://cloud.openstacklab.me" target="_blank" rel="noopener" class="portal">
+      <div>
+        <div class="p-badge badge-blue">Dashboard</div>
+        <div class="p-name">Cloud Control Panel</div>
+        <div class="p-url">cloud.openstacklab.me</div>
+      </div>
+      <div class="p-arrow">↗</div>
+    </a>
+
+    <a href="https://db.openstacklab.me" target="_blank" rel="noopener" class="portal">
+      <div>
+        <div class="p-badge badge-green">Database</div>
+        <div class="p-name">Database Manager</div>
+        <div class="p-url">db.openstacklab.me</div>
+      </div>
+      <div class="p-arrow">↗</div>
+    </a>
+
+    <a href="https://drive.openstacklab.me" target="_blank" rel="noopener" class="portal">
+      <div>
+        <div class="p-badge badge-amber">Files</div>
+        <div class="p-name">Cloud Drive</div>
+        <div class="p-url">drive.openstacklab.me</div>
+      </div>
+      <div class="p-arrow">↗</div>
+    </a>
+
+    <a href="#contact" class="portal">
+      <div>
+        <div class="p-badge badge-violet">Monitoring</div>
+        <div class="p-name">Metrics &amp; Alerts</div>
+        <div class="p-url">Available after account creation</div>
+      </div>
+      <div class="p-arrow">↗</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <h2>Get your account.</h2>
+    <p>
+      We create each account personally so you get the right access. Leave your details and
+      we'll reach out within 24 hours with everything you need to get started.
+    </p>
+
+    <form id="form">
+      <div class="two">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" placeholder="Full name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="you@gmail.com" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="access">What do you need access to?</label>
+        <select id="access">
+          <option value="Everything — Dashboard, Database, Files, Monitoring">Everything — Dashboard, Database, Files, Monitoring</option>
+          <option value="Cloud Dashboard (VMs and Networking)">Cloud Dashboard (VMs and Networking)</option>
+          <option value="Database Manager">Database Manager</option>
+          <option value="Cloud Drive (Files)">Cloud Drive (Files)</option>
+          <option value="Monitoring and Metrics">Monitoring and Metrics</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="purpose">What are you working on? <span style="font-weight:400;color:#b0b0a8">(optional)</span></label>
+        <textarea id="purpose" placeholder="A quick note on your use case..."></textarea>
+      </div>
+      <button type="submit" class="sub-btn" id="sub-btn">Send Request →</button>
+      <div class="form-err" id="form-err">Something went wrong — please try again.</div>
+      <p class="form-note">We'll reach out personally once your account is ready.</p>
+    </form>
+
+    <div class="form-ok" id="form-ok">
+      <div class="tick">✓</div>
+      <h3>You're on the list.</h3>
+      <p>We'll review your request and get back to you within 24 hours with login details.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-logo">Stack<b>Lab</b> Cloud</span>
+  <ul class="foot-links">
+    <li><a href="#features">Platform</a></li>
+    <li><a href="#portals">Services</a></li>
+    <li><a href="#contact">Get Access</a></li>
+  </ul>
+  <span class="foot-copy">© 2026 StackLab Cloud</span>
+</footer>
+
+<script>
+  // ── Change this to wherever your Flask app is running ──
+  // Local testing:    http://localhost:5000/request-access
+  // After deploying:  https://yourdomain.com/request-access
+  const API = "http://localhost:5000/request-access";
+
+  const form   = document.getElementById("form");
+  const btn    = document.getElementById("sub-btn");
+  const ok     = document.getElementById("form-ok");
+  const err    = document.getElementById("form-err");
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    err.style.display = "none";
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    const payload = {
+      name:    document.getElementById("name").value.trim(),
+      email:   document.getElementById("email").value.trim(),
+      access:  document.getElementById("access").value,
+      purpose: document.getElementById("purpose").value.trim()
+    };
+
+    try {
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        form.style.display = "none";
+        ok.style.display = "block";
+      } else {
+        throw new Error(data.error || "Unknown error");
+      }
+    } catch(e) {
+      err.textContent = "Something went wrong — please try again. (" + e.message + ")";
+      err.style.display = "block";
+      btn.disabled = false;
+      btn.textContent = "Send Request →";
+    }
+  });
+</script>
+</body>
+</html>
