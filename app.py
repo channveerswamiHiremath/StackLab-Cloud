@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import smtplib
 import os
@@ -226,13 +226,17 @@ We'll review it and send your login credentials within 24 hours.
         smtp.login(YOUR_EMAIL, APP_PASSWORD)
         smtp.send_message(msg)
 
+@app.route("/")
+def home():
+    return send_file("openstacklab.html")
+
 
 @app.route("/request-access", methods=["POST"])
 def request_access():
-    data    = request.get_json(force=True)
-    name    = data.get("name", "").strip()
-    email   = data.get("email", "").strip()
-    access  = data.get("access", "Not specified")
+    data = request.get_json(force=True)
+    name = data.get("name", "").strip()
+    email = data.get("email", "").strip()
+    access = data.get("access", "Not specified")
     purpose = data.get("purpose", "")
 
     if not name or not email:
@@ -248,6 +252,6 @@ def request_access():
 
 
 if __name__ == "__main__":
-    # Run with:  python app.py
-    # Or in production:  gunicorn app:app
-    app.run(debug=True, port=5000)
+    # Run with: python app.py
+    # Production: gunicorn app:app
+    app.run(host="0.0.0.0", port=5000, debug=True)
